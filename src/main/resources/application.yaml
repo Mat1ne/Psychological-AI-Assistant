@@ -8,8 +8,13 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    druid:
-      driver-class-name: ${Psychological.datasource.driver-class-name}
-      url: jdbc:mysql://${Psychological.datasource.host}:${Psychological.datasource.port}/${Psychological.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: ${Psychological.datasource.username}
-      password: ${Psychological.datasource.password}
+    driver-class-name: ${Psychological.datasource.driver-class-name}
+    url: jdbc:mysql://${Psychological.datasource.host}:${Psychological.datasource.port}/${Psychological.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${Psychological.datasource.username}
+    password: ${Psychological.datasource.password}
+jwt:
+  secret: ${Psychological.jwt.secret}
+  expiration: ${Psychological.jwt.expiration}
+  refresh-expiration: ${Psychological.jwt.refresh-expiration}
+  header: ${Psychological.jwt.header}
+  token-prefix: ${Psychological.jwt.token-prefix}
