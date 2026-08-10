@@ -1,9 +1,13 @@
 package com.matong.Admin.Login;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.matong.Admin.EnumClass.UserStatus;
+import com.matong.Admin.EnumClass.UserType;
 import com.matong.Admin.Exception.BusinessException;
 import com.matong.Admin.Login.Convert.UserConvert;
 import com.matong.Admin.Login.DTO.UserLoginCommandDTO;
+import com.matong.Admin.Login.DTO.UserRegisterCommandDTO;
 import com.matong.Admin.Login.Entity.User;
 import com.matong.Admin.Login.VO.UserLoginResponseDTO;
 import com.matong.Admin.Util.JwtTokenUtil;
@@ -45,5 +49,34 @@ public class LoginServiceImpl implements LoginService {
         String token = JwtTokenUtil.generateToken(user.getId(), user.getUsername(), user.getUserType());
         UserLoginResponseDTO.UserDetailResponseDTO info = UserConvert.entityToDetailResponse(user);
         return UserConvert.entityToLoginResponse(token, info);
+    }
+    //注册用户
+    @Override
+    public UserLoginResponseDTO.UserDetailResponseDTO register(UserRegisterCommandDTO userRegisterCommandDTO) {
+        System.out.println(JSONUtil.parseObj(userRegisterCommandDTO));
+        if(!userRegisterCommandDTO.getPassword().equals(userRegisterCommandDTO.getConfirmPassword())) {
+            throw new BusinessException("密码与确认密码不一致");
+        }
+        LambdaQueryWrapper<User> EmailQueryWrapper = new LambdaQueryWrapper<>();
+        EmailQueryWrapper.eq(User::getUsername, userRegisterCommandDTO.getUsername())
+                .or()
+                .eq(User::getEmail, userRegisterCommandDTO.getUsername());
+        if (loginMapper.selectOne(EmailQueryWrapper) != null) {
+            throw new BusinessException("用户邮箱已存在");
+        }
+        LambdaQueryWrapper<User> UsernameQueryWrapper = new LambdaQueryWrapper<>();
+        UsernameQueryWrapper.eq(User::getUsername, userRegisterCommandDTO.getUsername());
+        if (loginMapper.selectOne(UsernameQueryWrapper) != null) {
+            throw new BusinessException("用户名已存在");
+        }
+        if(!UserType.isValidCode(userRegisterCommandDTO.getUserType())) {
+            throw new BusinessException("用户类型无效");
+        }
+        String password = userRegisterCommandDTO.getPassword().trim();
+        String encodedPassword = bCryptPasswordEncoder.encode(password);
+        User user = UserConvert.registerCommandToEntity(userRegisterCommandDTO, encodedPassword);
+        loginMapper.insert(user);
+
+        return UserConvert.entityToDetailResponse(user);
     }
 }

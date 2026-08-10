@@ -18,7 +18,8 @@ public class SecurityConfig {
             "/",
             "/error",
             "/api/login",
-            "/api/user/login"
+            "/api/user/login",
+            "/api/user/add"
     };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
