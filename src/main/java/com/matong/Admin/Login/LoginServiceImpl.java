@@ -79,4 +79,13 @@ public class LoginServiceImpl implements LoginService {
 
         return UserConvert.entityToDetailResponse(user);
     }
+
+    @Override
+    public UserLoginResponseDTO.UserDetailResponseDTO getByUserId(Long userId) {
+        User user = loginMapper.selectById(userId);
+        if (user == null) {
+            throw new BusinessException("用户不存在");
+        }
+        return UserConvert.entityToDetailResponse(user);
+    }
 }

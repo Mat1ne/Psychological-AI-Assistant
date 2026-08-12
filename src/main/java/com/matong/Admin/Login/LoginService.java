@@ -20,4 +20,11 @@ public interface LoginService {
      * @return
      */
     UserLoginResponseDTO.UserDetailResponseDTO register(UserRegisterCommandDTO userRegisterCommandDTO);
+
+    /**
+     * 根据用户ID查询用户信息
+     * @param userId
+     * @return
+     */
+    UserLoginResponseDTO.UserDetailResponseDTO getByUserId(Long userId);
 }
