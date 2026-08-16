@@ -1,4 +1,4 @@
-package com.matong.Admin.PsychologicalChat.VO;
+package com.matong.User.PsychologicalChat.VO;
 
 public class StructOutPutResponse {
     public record StreamChatSession(

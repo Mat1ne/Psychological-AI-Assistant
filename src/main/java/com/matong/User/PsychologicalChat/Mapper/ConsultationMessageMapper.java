@@ -1,8 +1,7 @@
-package com.matong.Admin.PsychologicalChat.Mapper;
+package com.matong.User.PsychologicalChat.Mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.matong.Admin.PsychologicalChat.Entity.ConsultationMessage;
-import lombok.extern.slf4j.Slf4j;
+import com.matong.User.PsychologicalChat.Entity.ConsultationMessage;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

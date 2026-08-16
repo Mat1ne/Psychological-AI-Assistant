@@ -1,7 +1,7 @@
-package com.matong.Admin.PsychologicalChat.Service;
+package com.matong.User.PsychologicalChat.Service;
 
-import com.matong.Admin.PsychologicalChat.DTO.ConsultationSessionCreateDTO;
-import com.matong.Admin.PsychologicalChat.Entity.ConsultationSession;
+import com.matong.User.PsychologicalChat.DTO.ConsultationSessionCreateDTO;
+import com.matong.User.PsychologicalChat.Entity.ConsultationSession;
 
 public interface ConsultationSessionService {
     /**

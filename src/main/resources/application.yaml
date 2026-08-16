@@ -12,6 +12,16 @@ spring:
     url: jdbc:mysql://${Psychological.datasource.host}:${Psychological.datasource.port}/${Psychological.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: ${Psychological.datasource.username}
     password: ${Psychological.datasource.password}
+  ai:
+    openai:
+      chat:
+        options:
+          model: ${Psychological.ai.openai.chat.options.model}
+          tool-calling:
+            enabled: ${Psychological.ai.openai.chat.options.tool-calling.enabled}
+        completions-path: ${Psychological.ai.openai.chat.completions-path}
+      api-key: ${Psychological.ai.openai.api-key}
+      base-url: ${Psychological.ai.openai.base-url}
 jwt:
   secret: ${Psychological.jwt.secret}
   expiration: ${Psychological.jwt.expiration}

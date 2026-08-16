@@ -1,4 +1,4 @@
-package com.matong.Admin.PsychologicalChat.Entity;
+package com.matong.User.PsychologicalChat.Entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

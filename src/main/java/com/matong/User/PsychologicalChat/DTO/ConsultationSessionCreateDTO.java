@@ -1,4 +1,4 @@
-package com.matong.Admin.PsychologicalChat.DTO;
+package com.matong.User.PsychologicalChat.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,14 +1,13 @@
-package com.matong.Admin.PsychologicalChat.ServiceImpl;
+package com.matong.User.PsychologicalChat.ServiceImpl;
 
-import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.matong.Admin.Login.Entity.User;
 import com.matong.Admin.Login.LoginMapper;
-import com.matong.Admin.PsychologicalChat.DTO.ConsultationSessionCreateDTO;
-import com.matong.Admin.PsychologicalChat.Entity.ConsultationSession;
-import com.matong.Admin.PsychologicalChat.Mapper.ConsultationSessionMapper;
-import com.matong.Admin.PsychologicalChat.Service.ConsultationSessionService;
+import com.matong.User.PsychologicalChat.DTO.ConsultationSessionCreateDTO;
+import com.matong.User.PsychologicalChat.Entity.ConsultationSession;
+import com.matong.User.PsychologicalChat.Mapper.ConsultationSessionMapper;
+import com.matong.User.PsychologicalChat.Service.ConsultationSessionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
